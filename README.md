@@ -63,7 +63,7 @@ ____
 Caso opte pelo download direto do site, é só clicar em ***Download for Windows/Linux***
 
 <p align="center">
-  <img src="https://github.com/Daniel-Boll/Apostila_Paralelismo/blob/master/Imagens/Apostila_1.png">
+  <img src="https://github.com/Daniel-Boll/Apostila_Paralelismo/blob/master/Imagens%20apostila/Apostila_1.png">
 </p>
 
 ____
