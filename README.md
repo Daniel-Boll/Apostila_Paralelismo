@@ -10,7 +10,7 @@
 
 1. <a href="#Ferramentas">Ferramentas</a><br>
   1.1 <a href="#VSC">Visual Studio Code</a><br>
-  1.3 <a href="#VSC2">Visual Studio Community 2019</a>
+  1.2 <a href="#VSC2">Visual Studio Community 2019</a>
 ----
 
 <div id="Ferramentas"></div>
@@ -58,7 +58,7 @@ foo@bar:~$ sudo apt update
 foo@bar:~$ sudo apt install code
 ```
 
-----
+____
 
 Caso opte pelo download direto do site, é só clicar em ***Download for Windows/Linux***
 
@@ -66,6 +66,13 @@ Caso opte pelo download direto do site, é só clicar em ***Download for Windows
   <img src="https://github.com/Daniel-Boll/Apostila_Paralelismo/blob/master/Imagens/Apostila_1.png">
 </p>
 
+____
 
-[0] https://code.visualstudio.com/
+<div id="VSC2"></div>
+
+### 1.2 Visual Studio Community 2019 [(Visual Studio Code)](https://github.com/microsoft/vscode)
+
+{...}
+
+[0] https://code.visualstudio.com/<br>
 [1] https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-18-04/
