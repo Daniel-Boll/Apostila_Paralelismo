@@ -104,8 +104,96 @@ Algoritmos Genéticos (AG ou GA) foram idealizados e experimentados por John Hol
 
 O problema que escolhi resolver e aplicar o *Algoritmo Genético* foi proposto por [Ayran Andrade Sampaio](https://github.com/AyranAndrade) podem checar a ideia original [aqui](https://github.com/AyranAndrade/Hello-World-Algoritmo-Genetico). Resumidamente se baseia em um algoritmo que consiga evoluir uma cadeia de caracteres aleatórios até a cadeia desejada. Eu peguei a ideia do problema que ele fez e algumas partes de sua estrutura e comecei a fazer o algoritmo. Note que ele não segue todas as regras pra um AG perfeito há alguns detalhes que podem facilitar o processo e coisas que fiz a mais para me ajudar, conforme o processo explico melhor.
 
-Eu dividi o código em dois arquivos, um *main.cpp* e outro *GeneticAlgorithm.cpp*. Irei passando trecho a trecho do código devido ao seu tamanho, mas pode achá-lo completo [aqui](https://github.com/Daniel-Boll/Apostila_Paralelismo/source/GeneticAlgorithm/) 
+Eu dividi o código em dois arquivos, um *main.cpp* e outro *GeneticAlgorithm.cpp*. Irei passando trecho a trecho do código devido ao seu tamanho, mas pode achá-lo completo [aqui](https://github.com/Daniel-Boll/Apostila_Paralelismo/source/GeneticAlgorithm/).
 
+Agora em seu projeto criado no *Visual Studio* deverá ter um arquivo com o mesmo nome do projeto em **Arquivos de Origem**. No meu caso como criei o projeto chamado GeneticAlgorithm nos meus arquivos de origem encontro **GeneticAlgorithm.cpp**.
+
+<p align="center">
+  <img src="https://github.com/Daniel-Boll/Apostila_Paralelismo/blob/master/Imagens%20apostila/Apostila_8.png">
+</p>
+
+Iremos criar mais um arquivo de origem que será nosso *main* o **main.cpp**. Para isso clicamos em cima de **Arquivos de Origem** -> **Adicionar** -> **Novo Item** ou apertamos **CTRL+SHIFT+A** após ter clicado no diretório que quisermos adicionar.
+
+<p align="center">
+  <img src="https://github.com/Daniel-Boll/Apostila_Paralelismo/blob/master/Imagens%20apostila/Apostila_9.png">
+</p>
+
+Então selecione Arquivo do C++ (.cpp) e nomeie-o **main.cpp**
+
+<p align="center">
+  <img src="https://github.com/Daniel-Boll/Apostila_Paralelismo/blob/master/Imagens%20apostila/Apostila_10.png">
+</p>
+
+Irá abrir um código vazio, iremos inserir o seguinte código dentro dele.
+
+```cpp
+/*
+GeneticAlgorithm.cpp
+
+--- Alcançar uma cadeia de caracteres utilizando Algoritmo Genético ---
+
+@autor: Daniel Carlos Chaves Boll
+GITHUB: https://github.com/daniel-boll
+
+
+data de início: 28/07/2019
+data de termino: 03/08/2020
+
+
+Editor: Visual Studio Code
+
+Ideia de Ayran Andrade Sampaio. GITHUB: https://github.com/AyranAndrade
+*/
+
+#include "cstdio"
+#include "cstring"
+#include <chrono>
+#include <thread>
+#include "GeneticAlgorithm.h"
+
+int main() {
+    GeneticAlgorithm ga = GeneticAlgorithm("frasedesejadaalcancar"); // Construtor w/ params 
+    // GeneticAlgorithm ga = GeneticAlgorithm(); // Construtor padrão "hello world"
+    return 0;
+}
+```
+
+Irá indicar alguns erros, devido ao fato de não termos o cabeçalho do código GeneticAlgorithm que é **GeneticAlgorithm.h**, iremos criá-lo em **Arquivos de Cabeçalho** -> **Adicionar** -> **Novo Item**, dessa vez selecionando **Arquivos de Cabeçalho (.h)**.
+
+Assim que feito, colocaremos o seguinte código dentro.
+
+```cpp
+#pragma once
+#include <vector>
+#include <string>
+#include <cstdio>
+#include <fstream>
+
+class GeneticAlgorithm {
+public:
+    int n = 100, generation = 0;
+    int nthreads = 2;
+    std::string phrase;
+    std::vector <std::string> population;
+    std::vector <std::string> populationUp;
+
+
+    GeneticAlgorithm(); // Construtor default
+    GeneticAlgorithm(std::string phrase);
+    void initializePopulation(); // Inicializa a população
+    int fitness(std::string population); // Avalia a população
+    void elitism(); // Seleciona os 20 melhores individuos e adiciona outros 10
+    void evolPop(); // Fica evoluindo a população até o resultado esperado
+    std::string crossOver(std::string father, std::string mother, int state); // Cruza a população
+    void mutation(); // Altera algum caracter da palavra
+    int best(int state); // Printa o melhor atual
+    ~GeneticAlgorithm(); // Destrutor
+};
+```
+
+Agora os erros devem ter sumido, iremos agora ao **GeneticAlgorithm.cpp** onde a mágica irá acontecer. Após apagar tudo o que tinha previamente sido criado pela IDE colocaremos
+
+{...}
 ____
 
 <div id="RS"><div>
